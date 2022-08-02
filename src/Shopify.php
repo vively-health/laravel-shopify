@@ -70,7 +70,7 @@ class Shopify
     public function getHttpClient(): PendingRequest
     {
         return $this->httpClient ??= Http::baseUrl($this->getBaseUrl())
-            ->withBasicAuth($this->apiKey, $this->password);
+            ->withHeaders(['X-Shopify-Access-Token' => $this->password]);
     }
 
     public function graphQl(): PendingRequest
